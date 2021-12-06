@@ -3,18 +3,15 @@ import { temperature } from '../context/MyContect'
 
 export default function TempChnage() {
 
-    const tempValues = React.useContext(temperature);
-    const setTempValues = React.useContext(temperature);
+    const { setTempValues } = React.useContext(temperature);
 
 
     const [value, value2] = React.useState("cel")
 
     const onChangeValue = (event: any) => {
-        value2(event.target.value);
+        setTempValues(event.target.value);
     }
-    React.useEffect(() => {
-        // setTempValues("value")
-    })
+    
     return (
         <div onChange={onChangeValue} className='temperature-toggle'>
             <label>

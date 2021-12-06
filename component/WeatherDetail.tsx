@@ -1,9 +1,12 @@
 import React from 'react'
 import TempChnage from './TempChnage'
+import { temperature } from '../context/MyContect'
+
 export default function WeatherDetail(props: any) {
     const weatherData = props.data
     const today = props.data.consolidated_weather[0]
-
+    const { tempValues } = React.useContext(temperature);
+    
     return (
         <div className='weather-detail-container'>
             <div className="weather-detail">
@@ -22,11 +25,31 @@ export default function WeatherDetail(props: any) {
                                             width="50" height="50" />
                                     </div>
                                     <div className="box-temp">
-                                        <span>{Math.round(item.max_temp)}
-                                            <span className='temp-icon'>&#176;C</span>
+                                        <span>
+                                            {
+                                                tempValues == 'cel' ?
+                                                    <>
+                                                        {Math.round(item.max_temp)}
+                                                        <span className='temp-icon'>&#176;C</span>
+                                                    </> :
+                                                    <>
+                                                        {(Math.round(item.max_temp) * 9 / 5) + 32}
+                                                        <span className='temp-icon'>&#176;F</span>
+                                                    </>
+                                            }
                                         </span>
-                                        <span className='text-dark'>{Math.round(item.min_temp)}
-                                            <span className='temp-icon'>&#176;C</span>
+                                        <span className='text-dark'>
+                                            {
+                                                tempValues == 'cel' ?
+                                                    <>
+                                                        {Math.round(item.min_temp)}
+                                                        <span className='temp-icon'>&#176;C</span>
+                                                    </> :
+                                                    <>
+                                                        {(Math.round(item.min_temp) * 9 / 5) + 32}
+                                                        <span className='temp-icon'>&#176;F</span>
+                                                    </>
+                                            }
                                         </span>
                                     </div>
                                 </div>

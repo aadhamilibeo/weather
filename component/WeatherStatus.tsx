@@ -1,6 +1,9 @@
 import React from 'react'
+import { temperature } from '../context/MyContect'
 
 export default function WeatherStatus(props: any) {
+    const { tempValues } = React.useContext(temperature);
+
 
     const weatherData = props.data[0]
     const title = props.title
@@ -15,7 +18,13 @@ export default function WeatherStatus(props: any) {
                 />
             </div>
             <div className="state-temp">
-                <h2 className="temp">{Math.round(weatherData.the_temp)} <span className='text-dark'>&#176;C</span></h2>
+
+                <h2 className="temp">
+                    {
+                        tempValues == 'cel' ? <>{Math.round(weatherData.the_temp)} <span className='text-dark'>&#176;C</span></> :
+                            <>{(Math.round(weatherData.the_temp) * 9/5) + 32} <span className='text-dark'>&#176;F</span></>
+                    }
+                </h2>
             </div>
             <div className="state-name">
                 <h5 className="name text-dark fw-bold">{weatherData.weather_state_name} </h5>
