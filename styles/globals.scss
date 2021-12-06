@@ -254,3 +254,83 @@ a {
     top: -12px;
   }
 }
+.search-form {
+  background-color: $bg-color;
+  padding: 30px 50px;
+}
+.btn-close {
+  cursor: pointer;
+}
+
+.btn {
+  border-radius: 0;
+}
+.input-group {
+  position: relative;
+  input.form-control {
+    border-radius: 0;
+    background-color: transparent;
+    padding-left: 40px;
+    color: $white;
+    &::placeholder {
+      color: $gray2;
+    }
+  }
+  &::before {
+    content: "\e8b6";
+    font-family: "Material Icons";
+    font-size: 25px;
+    left: 10px;
+    position: absolute;
+    color: $gray2;
+  }
+}
+ul.form-value {
+  list-style: none;
+  a {
+    display: flex;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border: 1px solid $bg-color;
+    transition: 0.5s ease-in-out;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    color: $gray;
+    &::after {
+      content: "\e5cc";
+      font-family: "Material Icons";
+      opacity: 0;
+    }
+    &:hover {
+      border: 1px solid #fff;
+      color: $text-color;
+
+      &::after {
+        content: "\e5cc";
+        font-family: "Material Icons";
+        opacity: 1;
+      }
+    }
+  }
+}
+.loader {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  .material-icons {
+    font-size: 100px;
+    animation: rota 3s infinite;
+  }
+}
+@keyframes rota {
+  from {
+    transform: rotate(360deg);
+    opacity: 0.5;
+  }
+  to {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}

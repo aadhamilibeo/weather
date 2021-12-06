@@ -4,10 +4,11 @@ import { temperature } from '../context/MyContect'
 export default function WeatherStatus(props: any) {
     const { tempValues }: any = React.useContext(temperature);
 
+    const { getSearch }: any = React.useContext(temperature);
+
 
     const weatherData = props.data[0]
     const title = props.title
-    const date = props.data[0].applicable_date.toString("MMMM yyyy")
 
     const [weatherDate, setWeatherDate] = React.useState("")
 
@@ -20,11 +21,10 @@ export default function WeatherStatus(props: any) {
         }))
         setWeatherDate(dates)
     }, [])
-
     return (
         <div className="weather-status">
             <header>
-                <button className="btn btn-info text-white">Seach for places</button>
+                <button className="btn btn-info text-white" onClick={() => getSearch(false)}>Seach for places</button>
                 <span className="location-icon">
                     <span className="material-icons material-icons-outlined">
                         gps_fixed
@@ -39,7 +39,6 @@ export default function WeatherStatus(props: any) {
                 />
             </div>
             <div className="state-temp">
-
                 <h2 className="temp">
                     {
                         tempValues == 'cel' ? <>{Math.round(weatherData.the_temp)} <span className='text-dark'>&#176;C</span></> :

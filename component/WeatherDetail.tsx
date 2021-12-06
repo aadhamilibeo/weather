@@ -5,7 +5,7 @@ import { temperature } from '../context/MyContect'
 export default function WeatherDetail(props: any) {
     const weatherData = props.data
     const today = props.data.consolidated_weather[0]
-    const { tempValues }: any = React.useContext(temperature);
+    const {tempValues}: any= React.useContext(temperature);
 
     const [weatherDate, setWeatherDate] = React.useState([""])
 
@@ -22,7 +22,7 @@ export default function WeatherDetail(props: any) {
         setWeatherDate(dates)
     }, [])
 
-
+    
 
     return (
         <div className='weather-detail-container'>
@@ -104,7 +104,7 @@ export default function WeatherDetail(props: any) {
                                     <span>100</span>
                                 </div>
                                 <div className="progress">
-                                    <div className="progress-bar progress-bar-striped bg-warning" style={{ width: Math.round(today.humidity) + "%" }} aria-valuenow={Math.round(today.humidity)} >
+                                    <div className="progress-bar progress-bar-striped bg-warning"  style={{ width: Math.round(today.humidity) + "%" }} aria-valuenow={Math.round(today.humidity)} >
 
                                     </div>
                                 </div>

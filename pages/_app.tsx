@@ -8,8 +8,8 @@ import { temperature } from '../context/MyContect'
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [tempValues, setTempValues] = React.useState("cel")
-
-  const value = { tempValues, setTempValues };
+  const [search, getSearch] = React.useState(true);
+  const value = { tempValues, setTempValues, search, getSearch };
   return (
     <temperature.Provider value={value}>
       <Component {...pageProps} />
