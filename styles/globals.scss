@@ -1,0 +1,240 @@
+@import "./custom.scss";
+
+$body-color: #100e1d;
+$bg-color: #1e213a;
+$text-color: #e7e7eb;
+$text-color2: #a09fb1;
+$gray: #88869d;
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Raleway", sans-serif;
+}
+body {
+  background-color: $body-color;
+  color: $text-color;
+  font-size: 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+  .weather-status {
+    background-color: $bg-color;
+    text-align: center;
+    display: grid;
+    font-weight: 500;
+    font-size: 18px;
+    align-items: center;
+    .location {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .material-icons {
+        font-size: 22px;
+        margin-right: 5px;
+      }
+    }
+    .state-abbr {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      position: relative;
+      .state-abbr-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      img {
+        width: 200px;
+      }
+    }
+    .temp {
+      font-size: 120px;
+      line-height: 1;
+      span {
+        font-size: 40px;
+      }
+    }
+    .state-name {
+      .name {
+        font-size: 30px;
+      }
+    }
+    .date {
+      display: inline-flex;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+      padding-bottom: 20px;
+      .dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: gray;
+      }
+    }
+  }
+  .weather-detail {
+    background-color: $body-color;
+    padding: 0px 100px 30px 100px;
+    .weather-box {
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: repeat(5, 1fr);
+      .box {
+        background-color: $bg-color;
+        padding: 15px 15px;
+        display: grid;
+        gap: 15px;
+        .box-temp {
+          display: flex;
+          justify-content: space-between;
+          padding-top: 10px;
+          font-weight: 500;
+          font-size: 19px;
+        }
+      }
+    }
+  }
+}
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  .highlights-box {
+    background-color: $bg-color;
+    height: 100%;
+    padding: 30px;
+    .icon {
+      span.material-icons {
+        width: 30px;
+        height: 30px;
+        background-color: #000;
+        border-radius: 50%;
+        font-size: 17px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transform: rotate(-180deg);
+        margin-right: 10px;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+    .value {
+      font-size: 45px;
+      font-weight: bold;
+      span {
+        font-weight: 400;
+        font-size: 25px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+.footer {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+.progress-container {
+  .progress-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 2px 0;
+    color: $text-color2;
+    &.bottom {
+      justify-content: end;
+    }
+  }
+}
+
+.weather-hightlights {
+  padding-top: 60px;
+  .title {
+    padding-bottom: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+.temp-icon {
+  position: relative;
+  margin-left: 6px;
+  font-size: 16px;
+}
+.weather-detail-container {
+  display: grid;
+}
+
+.temperature-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px 0 40px 0;
+  input[type="radio"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $gray;
+    -webkit-appearance: none; /*to disable the default appearance of radio button*/
+    -moz-appearance: none;
+  }
+
+  input[type="radio"]:focus {
+    /*no need, if you don't disable default appearance*/
+    outline: none; /*to remove the square border on focus*/
+  }
+
+  input[type="radio"]:checked {
+    /*no need, if you don't disable default appearance*/
+    background-color: $text-color;
+  }
+
+  input[type="radio"]:checked ~ span:first-of-type {
+    color: $bg-color;
+  }
+
+  label span:first-of-type {
+    position: relative;
+    left: -27px;
+    font-size: 15px;
+    color: $text-color;
+    font-size: 18px;
+    font-weight: bold;
+    pointer-events: none;
+  }
+
+  label span {
+    position: relative;
+    top: -12px;
+  }
+}

@@ -1,0 +1,19 @@
+/* The following block can be included in a custom.scss */
+
+/* make the customizations */
+$theme-colors: (
+    "primary": #3C47E9,
+    "danger": #ea3943,
+    "success": #16c784,
+    "dark": #88869D,
+    "warning":#FFEC65,
+    "secondary":  #88869D
+);
+
+$progress-border-radius: 50px;
+$progress-height: 8px;
+
+/* import bootstrap to set changes */
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
