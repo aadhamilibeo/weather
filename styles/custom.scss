@@ -2,18 +2,19 @@
 
 /* make the customizations */
 $theme-colors: (
-    "primary": #3C47E9,
+    "primary": #3c47e9,
     "danger": #ea3943,
     "success": #16c784,
-    "dark": #88869D,
-    "warning":#FFEC65,
-    "secondary":  #88869D
+    "dark": #88869d,
+    "warning": #ffec65,
+    "secondary": #88869d,
+    "info": #6e707a,
 );
 
 $progress-border-radius: 50px;
 $progress-height: 8px;
 
+$btn-border-radius: 0;
+
 /* import bootstrap to set changes */
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-

@@ -5,6 +5,7 @@ $bg-color: #1e213a;
 $text-color: #e7e7eb;
 $text-color2: #a09fb1;
 $gray: #88869d;
+$gray2: #6e707a;
 
 *,
 ::after,
@@ -19,6 +20,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: "Raleway", sans-serif;
+  font-weight: 500;
 }
 body {
   background-color: $body-color;
@@ -98,6 +100,20 @@ a {
         height: 3px;
         border-radius: 50%;
         background-color: gray;
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+      align-items: center;
+
+      .location-icon {
+        background: $gray2;
+        padding: 8px;
+        line-height: 0;
+        cursor: pointer;
       }
     }
   }
@@ -225,7 +241,7 @@ a {
 
   label span:first-of-type {
     position: relative;
-    left: -27px;
+    left: -30px;
     font-size: 15px;
     color: $text-color;
     font-size: 18px;

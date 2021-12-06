@@ -5,16 +5,13 @@ import '../styles/globals.scss'
 import React from 'react'
 import { temperature } from '../context/MyContect'
 
-
-
-
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [tempValues, setTempValues] = React.useState("cel")
 
   const value = { tempValues, setTempValues };
   return (
-    <temperature.Provider value={{tempValues, setTempValues}}>
+    <temperature.Provider value={value}>
       <Component {...pageProps} />
     </temperature.Provider>
   )

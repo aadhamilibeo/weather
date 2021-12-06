@@ -5,8 +5,25 @@ import { temperature } from '../context/MyContect'
 export default function WeatherDetail(props: any) {
     const weatherData = props.data
     const today = props.data.consolidated_weather[0]
-    const { tempValues } = React.useContext(temperature);
-    
+    const { tempValues }: any = React.useContext(temperature);
+
+    const [weatherDate, setWeatherDate] = React.useState([""])
+
+    React.useEffect(() => {
+        var dates = [];
+        for (let i = 0; i < weatherData.consolidated_weather.length; i++) {
+            let date = new Date(weatherData.consolidated_weather[i].applicable_date);
+            dates.push(date.toLocaleString('en-US', {
+                day: 'numeric',
+                weekday: 'short',
+                month: 'short',
+            }))
+        }
+        setWeatherDate(dates)
+    }, [])
+
+
+
     return (
         <div className='weather-detail-container'>
             <div className="weather-detail">
@@ -17,7 +34,9 @@ export default function WeatherDetail(props: any) {
                             <div className="weather-inner text-center" key={index}>
                                 <div className="box">
                                     <div className="box-date">
-                                        <span>{item.applicable_date}</span>
+                                        {
+                                            index == 0 ? <span>Tomorrow</span> : <span>{weatherDate[index + 1]}</span>
+                                        }
                                     </div>
                                     <div className="box-icon">
                                         <img
@@ -85,7 +104,7 @@ export default function WeatherDetail(props: any) {
                                     <span>100</span>
                                 </div>
                                 <div className="progress">
-                                    <div className="progress-bar progress-bar-striped bg-warning" role="progressbar" style={{ width: Math.round(today.humidity) + "%" }} aria-valuenow={Math.round(today.humidity)} aria-valuemin="0" aria-valuemax="100">
+                                    <div className="progress-bar progress-bar-striped bg-warning" style={{ width: Math.round(today.humidity) + "%" }} aria-valuenow={Math.round(today.humidity)} >
 
                                     </div>
                                 </div>
