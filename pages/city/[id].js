@@ -8,8 +8,8 @@ import { temperature } from '../../context/MyContect'
 
 
 
-const City = ({ data }: any) => {
-    const { search }: any = React.useContext(temperature);
+const City = ({ data }) => {
+    const { search } = React.useContext(temperature);
     const [loading, setLoading] = React.useState(true)
 
     React.useEffect(() => {
@@ -39,7 +39,7 @@ const City = ({ data }: any) => {
 
 export default City;
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps(context) {
     const { id } = context.query;
 
     const res = await fetch(`https://www.metaweather.com/api/location/search/?query=${id}`);
