@@ -1,7 +1,12 @@
 import React from 'react'
 import { temperature } from '../context/MyContect'
+import axios from 'axios'
 
+import Link from "next/link";
 export default function WeatherStatus(props: any) {
+    const [Country, setCountry] = React.useState('')
+
+
     const { tempValues }: any = React.useContext(temperature);
 
     const { getSearch }: any = React.useContext(temperature);
@@ -12,7 +17,20 @@ export default function WeatherStatus(props: any) {
 
     const [weatherDate, setWeatherDate] = React.useState("")
 
+
+    const getGeoInfo = () => {
+        axios.get('https://ipapi.co/json/').then((response) => {
+            let data = response.data;
+            setCountry(data.country_name);
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
     React.useEffect(() => {
+        getGeoInfo();
+    })
+    React.useEffect(() => {
+
         let date = new Date(weatherData.applicable_date);
         let dates = (date.toLocaleString('en-US', {
             day: 'numeric',
@@ -23,12 +41,16 @@ export default function WeatherStatus(props: any) {
     }, [])
     return (
         <div className="weather-status">
+
             <header>
                 <button className="btn btn-info text-white" onClick={() => getSearch(false)}>Seach for places</button>
-                <span className="location-icon">
-                    <span className="material-icons material-icons-outlined">
-                        gps_fixed
-                    </span>
+                <span className="location-icon" >
+                    <Link href='/city/[id]' as={`/city/${Country}`}>
+                        <span className="material-icons material-icons-outlined" >
+                            gps_fixed
+                        </span>
+                    </Link>
+
                 </span>
             </header>
             <div className="state-abbr" >
