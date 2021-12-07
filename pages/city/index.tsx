@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Link from 'next/link'
 import Default from '../../layout/Default';
 
 export default function index() {
-    const [searchValue, setSearchValue] = React.useState("");
+    const [searchValue, setSearchValue] = useState("");
     return (
         <Default>
             <div className="container pt-5">
