@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Default from '../../layout/Default';
 
-export default function index() {
+export default function city() {
     const [searchValue, setSearchValue] = useState("");
     return (
         <Default>
