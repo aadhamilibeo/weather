@@ -10,15 +10,11 @@ import { temperature } from '../../context/MyContect'
 
 const City = ({ data }: any) => {
     const { search }: any = React.useContext(temperature);
-
-    const { getSearch }: any = React.useContext(temperature);
-
     const [loading, setLoading] = React.useState(true)
 
     React.useEffect(() => {
         setTimeout(async () => {
             setLoading(false)
-            getSearch(true)
         }, 2000);
     }, [])
     if (loading) {
