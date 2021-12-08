@@ -5,18 +5,21 @@ import WeatherStatus from '../../component/WeatherStatus';
 import Loader from '../../component/Loader';
 import Default from '../../layout/Default';
 import { temperature } from '../../context/MyContect'
-
-
+import { useRouter } from 'next/router'
 
 const City = ({ data }) => {
-    const { search } = React.useContext(temperature);
-    const [loading, setLoading] = React.useState(true)
+    const router = useRouter()
 
+    const { search } = React.useContext(temperature);
+    const { getSearch } = React.useContext(temperature);
+    const [loading, setLoading] = React.useState(true)
     React.useEffect(() => {
+        getSearch(true)
+        setLoading(true)
         setTimeout(async () => {
             setLoading(false)
         }, 2000);
-    }, [])
+    }, [router.asPath])
     if (loading) {
         return (
             <Default>
@@ -63,7 +66,4 @@ export async function getServerSideProps(context) {
             }
         };
     }
-
-
-
 }
